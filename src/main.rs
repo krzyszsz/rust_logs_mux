@@ -70,7 +70,7 @@ fn main() {
             EventsFromCommand::OutputLine(line) => println!("{line}"),
             EventsFromCommand::ErrorLine(line) => println!("{line}"),
             EventsFromCommand::OtherError(line) => println!("{line}"),
-            EventsFromCommand::ExitStatus(exitStatus) => println!("Process exited with exit status: {exitStatus}")
+            EventsFromCommand::ExitStatus(exit_status) => println!("Process exited with exit status: {exit_status}")
         }
     }
 
