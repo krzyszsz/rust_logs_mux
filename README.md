@@ -5,14 +5,11 @@ Next step will be to build a clone of linux Mux that suits my needs better (with
     let rx = start_command("dir".to_string());
 
     for result_line in rx {
-        if let EventsFromCommand::OutputLine(line) = result_line {
-            println!("{line}");
-        } else if let EventsFromCommand::ErrorLine(line) = result_line {
-            println!("{line}");
-        } else if let EventsFromCommand::OtherError(line) = result_line {
-            println!("{line}");
-        } else if let EventsFromCommand::ExitStatus(exitStatus) = result_line {
-            println!("Process exited with exit status: {exitStatus}");
+        match result_line {
+            EventsFromCommand::OutputLine(line) => println!("{line}"),
+            EventsFromCommand::ErrorLine(line) => println!("{line}"),
+            EventsFromCommand::OtherError(line) => println!("{line}"),
+            EventsFromCommand::ExitStatus(exitStatus) => println!("Process exited with exit status: {exitStatus}")
         }
     }
 ```
