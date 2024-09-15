@@ -2,6 +2,8 @@ Not much to see here. I'm learning Rust with a toy project that changes the defa
 Next step will be to build a clone of linux Mux that suits my needs better (with no ambitions to handle anything more than log files tail, so it's not going to replace standard linux mux any time soon!).
 
 ```Rust
+    // see in the main.rs the implementation of the start_command function. Here is an example how to use it:
+
     let rx = start_command("dir".to_string());
 
     for result_line in rx {
