@@ -31,11 +31,11 @@ fn start_command(cmd: String) -> Receiver<EventsFromCommand> {
         let stdout = child
             .stdout
             .take()
-            .expect("Stout should never panic after the line .stdout(Stdio::piped())");
+            .expect("Stdout should never panic after the line .stdout(Stdio::piped())");
         let stderr = child
             .stderr
             .take()
-            .expect("Stout should never panic after the line .stderr(Stdio::piped())");
+            .expect("Stderr should never panic after the line .stderr(Stdio::piped())");
 
         // Below creates another thread: reading error stream and sending it to the common channel.
         let tx1 = tx.clone();
