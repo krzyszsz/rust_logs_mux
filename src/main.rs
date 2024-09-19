@@ -4,6 +4,7 @@ use std::sync::mpsc;
 use std::sync::mpsc::{Receiver, Sender};
 use std::{thread};
 
+#[derive(Debug, Clone)]
 struct CommandContext {
     cmd: String,
     tx: Sender<ExtendedEvent>,
@@ -53,11 +54,7 @@ fn start_command_parametrized(command_context: CommandContext) {
             .expect("Stderr should never panic after the line .stderr(Stdio::piped())");
 
         // Below creates another thread: reading error stream and sending it to the common channel.
-        let context_copy = CommandContext {
-            tx: command_context.tx.clone(),
-            cmd: command_context.cmd.clone(),
-            source_id: command_context.source_id.clone()
-        };
+        let context_copy = command_context.clone();
         let tx1 = command_context.tx.clone();
         thread::spawn(move || {
             for line in BufReader::new(stderr).lines() {
