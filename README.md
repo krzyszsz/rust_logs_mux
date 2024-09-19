@@ -4,7 +4,7 @@ Next step will be to build a clone of linux Mux that suits my needs better (with
 ```Rust
     // see in the main.rs the implementation of the start_command function. Here is an example how to use it:
 
-    let rx = start_command("dir".to_string());
+    let rx = start_command(String::from("dir"));
 
     for result_line in rx {
         match result_line {
